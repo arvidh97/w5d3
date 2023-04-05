@@ -4,7 +4,7 @@ require_relative 'quest_data'
 
 class Questions
         attr_accessor :id, :title, :body, :author
-    
+
         def self.find_by_id(id)
             questions = QuestionsDatabase.instance.execute(<<-SQL, id)
                 SELECT
@@ -16,7 +16,7 @@ class Questions
             SQL
             Questions.new(questions.first)
        end
-    
+
         def self.find_by_author(author)
             questions = QuestionsDatabase.instance.execute(<<-SQL, author)
                 SELECT
@@ -28,7 +28,7 @@ class Questions
             SQL
             Questions.new(questions.first)
            end
-        
+
         def initialize(options)
             @id = options['id']
             @title = options['title']
