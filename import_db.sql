@@ -33,6 +33,7 @@ CREATE TABLE replies(
 );
 
 CREATE TABLE question_likes(
+
     user_id INTEGER NOT NULL REFERENCES users(id),
     question_id INTEGER NOT NULL REFERENCES questions(id),
     PRIMARY KEY (user_id, question_id)
@@ -73,5 +74,10 @@ VALUES
     ((SELECT questions_id FROM questions_follows WHERE id = 4), NULL, (SELECT id FROM users WHERE id = 1), "it's nice out"),
     ((SELECT questions_id FROM questions_follows WHERE id = 1), 1, (SELECT id FROM users WHERE id = 4), "that helped a lot");
 
-
-
+INSERT INTO
+    question_likes (user_id, question_id)
+VALUES
+    ((SELECT id FROM users WHERE lname = 'Davidson'), (SELECT id FROM questions WHERE id = 2)),
+    ((SELECT id FROM users WHERE lname = 'Bradford'), (SELECT id FROM questions WHERE id = 3)),
+    ((SELECT id FROM users WHERE lname = 'Steven'), (SELECT id FROM questions WHERE id = 4)),
+    ((SELECT id FROM users WHERE lname = 'Peterson'), (SELECT id FROM questions WHERE id = 3));
