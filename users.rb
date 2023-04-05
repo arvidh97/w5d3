@@ -1,8 +1,9 @@
 require 'sqlite3'
 require 'singleton'
 require_relative 'quest_data'
+require_relative 'questions'
 
-class Users
+class Users 
     attr_accessor :id, :fname, :lname
 
    def self.find_by_id(id)
@@ -34,5 +35,9 @@ class Users
         @id = options['id']
         @fname = options['fname']
         @lname = options['lname']
+   end
+
+   def authored_questions
+      Questions.find_by_author(self.id)
    end
 end

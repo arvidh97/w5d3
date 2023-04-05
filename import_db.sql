@@ -73,7 +73,7 @@ VALUES
 INSERT INTO
     replies (question_id, parent_id, user_id, body)
 VALUES
-    ((SELECT questions_id FROM questions_follows WHERE id = 1), 1, (SELECT id FROM users WHERE id = 4), "that helped a lot"),
+    ((SELECT questions_id FROM questions_follows WHERE id = 1), 4, (SELECT id FROM users WHERE id = 4), "that helped a lot"),
     ((SELECT questions_id FROM questions_follows WHERE id = 1), NULL, (SELECT id FROM users WHERE id = 2), "I don't know either"),
     ((SELECT questions_id FROM questions_follows WHERE id = 2), NULL, (SELECT id FROM users WHERE id = 3), "It's awfully bad"),
     ((SELECT questions_id FROM questions_follows WHERE id = 3), NULL, (SELECT id FROM users WHERE id = 4), "Bathroom's full"),
